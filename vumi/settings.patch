@@ -1,0 +1,37 @@
+--- a/go/settings.py
++++ b/go/settings.py
+@@ -31,13 +31,20 @@ ADMINS = (
+ MANAGERS = ADMINS
+ 
+ DATABASES = {
++#    'default': {
++#        'ENGINE': 'django.db.backends.sqlite3',
++#        'NAME': 'go.db',
++#        'USER': '',
++#        'PASSWORD': '',
++#        'HOST': '',
++#        'PORT': '',
++#    }
+     'default': {
+-        'ENGINE': 'django.db.backends.sqlite3',
+-        'NAME': 'go.db',
+-        'USER': '',
+-        'PASSWORD': '',
+-        'HOST': '',
+-        'PORT': '',
++        'ENGINE': 'django.db.backends.postgresql_psycopg2',
++        'NAME': 'vumigo-billing',
++        'USER': 'vumigo',
++        'PASSWORD': 'vumigo',
++        'HOST': 'postgres',
+     }
+ }
+ 
+--- a/go/production_settings.py
++++ b/go/production_settings.py
+@@ -0,0 +1,5 @@
++from go.base import amqp
++
++amqp.connect('librabbitmq://vumi:vumi@rabbitmq//develop')
++
++SECRET_KEY = 'secret'

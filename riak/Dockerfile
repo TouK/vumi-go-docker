@@ -1,0 +1,2 @@
+FROM hectcastro/riak 
+

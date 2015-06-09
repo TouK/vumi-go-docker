@@ -1,0 +1,21 @@
+riak:
+  build: riak/
+
+redis:
+  build: redis/
+
+rabbitmq:
+  build: rabbitmq/
+
+postgres:
+  build: postgres/
+
+vumi:
+  build: vumi/
+  links:
+    - riak
+    - redis
+    - rabbitmq
+    - postgres
+  tty: true
+  stdin_open: true
